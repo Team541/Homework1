@@ -13,27 +13,29 @@ namespace View
         static void Main(string[] args)
         {
             var color = new CatColor();
-            var cat = new Cat(color);
+            string Age;
+            
+            Console.WriteLine("Вы купили кошку.\n");
+            Console.WriteLine("Введите возраст кошки:");
+            Age = Console.ReadLine();
+            var cat = new Cat(color, Age);
+            Console.WriteLine("Введите имя кошки");
+            cat.Name = Console.ReadLine();
 
             int caseSwitch;
             do
             {
-                cat.SetCurrentColor();
                 Console.Write("Возраст кошки: " + cat.Age + "\nИмя кошки: " + cat.Name + "\nЦвет кошки: " + cat.CurrentColor);
-                Console.Write("\nМеню \n1.Покупка кошки. \n2.Выбрать цвет кошки. \n3.Покормить кошку. \n4.Наказать кошку. \n5.Выход\n");
+                Console.Write("\nМеню \n1.Выбрать цвет здоровой кошки. \n2.Выбрать цвет больной кошки. \n3.Покормить кошку. \n4.Наказать кошку. \n5.Выход\n");
                 caseSwitch = int.Parse (Console.ReadLine());
                 switch (caseSwitch)
                 {
                     case 1:
-                        Console.WriteLine("Введите возраст кошки:");
-                        cat.Age = Console.ReadLine();
-                        Console.WriteLine("Введите имя кошки");
-                        cat.Name = Console.ReadLine();
+                        Console.Write("Введите цвет здоровой кошки\n");
+                        color.HealthyColor = Console.ReadLine();
                         break;
                     case 2:
-                        Console.Write("Выбрать цвет здоровой кошки\n");
-                        color.HealthyColor = Console.ReadLine();
-                        Console.Write("Выбрать цвет больной кошки\n");
+                        Console.Write("Введите цвет больной кошки\n");
                         color.SickColor = Console.ReadLine();
                         break;
                     case 3:

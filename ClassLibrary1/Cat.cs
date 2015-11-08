@@ -8,27 +8,18 @@ namespace Model
 {
     public class Cat
     {
-        private string _age;
+        private readonly string _age;
         private string _name;
-        public string CurrentColor { get; set; }
         public CatColor Color { get; set; }
 
-        public Cat(CatColor color)
+        public Cat(CatColor color, string Age)
         {
             Color = color;
-            CurrentColor = color.HealthyColor;
+            _age = Age;
         }
         public string Age
         {
             get { return _age; }
-            set
-            {
-                if (string.IsNullOrEmpty(_age))
-                {
-                    _age = value;
-                }
-            }
-
         }
         public string Name
         {
@@ -51,9 +42,12 @@ namespace Model
         {
             --_health;
         }
-        public void SetCurrentColor()
+        public string CurrentColor
         {
-            CurrentColor = _health< 5 ? Color.SickColor : Color.HealthyColor;
+            get
+            {
+                return _health < 5 ? Color.SickColor : Color.HealthyColor;
+            }
         }
     }
 }
