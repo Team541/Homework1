@@ -19,35 +19,37 @@ namespace View
             Console.WriteLine("Введите возраст кошки:");
             Age = Console.ReadLine();
             var cat = new Cat(color, Age);
-            Console.WriteLine("Введите имя кошки");
-            cat.Name = Console.ReadLine();
 
             int caseSwitch;
             do
             {
                 Console.Write("Возраст кошки: " + cat.Age + "\nИмя кошки: " + cat.Name + "\nЦвет кошки: " + cat.CurrentColor);
-                Console.Write("\nМеню \n1.Выбрать цвет здоровой кошки. \n2.Выбрать цвет больной кошки. \n3.Покормить кошку. \n4.Наказать кошку. \n5.Выход\n");
+                Console.Write("\nМеню \n1.Выбрать имя кошки \n2.Выбрать цвет здоровой кошки. \n3.Выбрать цвет больной кошки. \n4.Покормить кошку. \n5.Наказать кошку. \n6.Выход\n");
                 caseSwitch = int.Parse (Console.ReadLine());
                 switch (caseSwitch)
                 {
                     case 1:
-                        Console.Write("Введите цвет здоровой кошки\n");
-                        color.HealthyColor = Console.ReadLine();
+                        Console.WriteLine("Введите имя кошки:\n");
+                        cat.Name = Console.ReadLine();
                         break;
                     case 2:
-                        Console.Write("Введите цвет больной кошки\n");
-                        color.SickColor = Console.ReadLine();
+                        Console.Write("Введите цвет здоровой кошки:\n");
+                        color.HealthyColor = Console.ReadLine();
                         break;
                     case 3:
-                        cat.Feed();
+                        Console.Write("Введите цвет больной кошки:\n");
+                        color.SickColor = Console.ReadLine();
                         break;
                     case 4:
-                        cat.Punish();
+                        cat.Feed();
                         break;
                     case 5:
+                        cat.Punish();
+                        break;
+                    case 6:
                         break;                                                  
                 }
-            } while (caseSwitch != 5);
+            } while (caseSwitch != 6);
         }
     }
 }
